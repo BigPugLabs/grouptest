@@ -42,3 +42,36 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
  Have fun testing and improving it! 😎
 
 
+# Features to Implement
+
+## Pomodoro
+- [X] Timer, start/stop -2 people - Kat
+
+## Extra functionality for todos
+- [X] Inital priority
+- [ ] Notes to the todos -- Jonathan taking this
+- [x] Arrows on todo -- Big Pug (Neal)
+
+Testing@gmail.com
+TesterNoTesting
+
+
+# Work Log
+## Sept 2 
+- Assigned CSS pages to people: Karan - Todos page, Jonathan - HomePage, Kat - Sign-up & Login page. 
+- Completed CSS for Sign-Up & Login page. 
+- Completed CSS for HomePage.
+- Assigned features to people. If you want to jump on a feature, message that person on discord.
+
+## Sept 3
+- Todo list css continued.
+- Pomodoro Creation started --> CSS completed. No JS functionality as of yet.
+  
+## Sept 5
+- Finished functionality of pomodoro timer. 
+- Added "add note" field to task input
+  - need to update CSS to accommodate newly added space inside input fields & note appearance in task list after submit
+    - CSS --> increased .box max-width from 400px to 500px to accommodate added "notes" input
+    - CSS --> added 20px padding-left to notes when added to task list (.todoNotes in todos.css)
+- Reordering Implemented - Neal
+- Added favicon - Neal
