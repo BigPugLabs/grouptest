@@ -116,24 +116,39 @@ async function downTodo() {
 
 // Pomodoro
 
-const timer = {
-  pomodoro: 25,
-  shortBreak: 5,
-  longBreak: 15,
-  longBreakInterval: 4,
-  sessions: 0,
-};
+let timer = JSON.parse(window.localStorage.getItem('timer'))
+if (timer == null) {
+  timer = {
+    pomodoro: 25,
+    shortBreak: 5,
+    longBreak: 15,
+    longBreakInterval: 4,
+    sessions: 0,
+    state: 'stop'
+  };
+  timer.mode = 'pomodoro'
+  timer.remainingTime = {
+    total: timer[timer.mode] * 60,
+    minutes: timer[timer.mode],
+    seconds: 0,
+  }
+}
+updateClock()
 
 let interval;
 
 const mainButton = document.getElementById('js-btn');
+if (timer.state == 'start') { startTimer() }
 mainButton.addEventListener('click', () => {
   const { action } = mainButton.dataset;
   if (action === 'start') {
+    timer.state = 'start'
     startTimer();
   } else {
+    timer.state = 'stop'
     stopTimer();
   }
+  window.localStorage.setItem("timer", JSON.stringify(timer))
 });
 
 const modeButtons = document.querySelector('#js-mode-buttons');
@@ -160,6 +175,7 @@ function startTimer() {
   const endTime = Date.parse(new Date()) + total * 1000;
 
   if (timer.mode === 'pomodoro') timer.sessions++;
+  window.localStorage.setItem("timer", JSON.stringify(timer))
 
   mainButton.dataset.action = 'stop';
   mainButton.textContent = 'STOP';
@@ -167,6 +183,7 @@ function startTimer() {
 
   interval = setInterval(function() {
     timer.remainingTime = getRemainingTime(endTime);
+    window.localStorage.setItem("timer", JSON.stringify(timer))
     updateClock();
 
     total = timer.remainingTime.total;
@@ -231,6 +248,7 @@ function switchMode(mode) {
     minutes: timer[mode],
     seconds: 0,
   };
+  window.localStorage.setItem("timer", JSON.stringify(timer))
 
   document
     .querySelectorAll('button[data-mode]')
@@ -264,5 +282,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  switchMode('pomodoro');
+  //switchMode('pomodoro');
 });
