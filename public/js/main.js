@@ -243,6 +243,7 @@ function updateClock() {
 
 function switchMode(mode) {
   timer.mode = mode;
+  timer.state = 'stop'
   timer.remainingTime = {
     total: timer[mode] * 60,
     minutes: timer[mode],
