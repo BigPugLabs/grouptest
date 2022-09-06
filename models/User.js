@@ -5,13 +5,13 @@ const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
-  todoList: { type: [String], default: [] }
+  todoOrderList: { type: [String], default: [] }
 })
 
 
 // Password hash middleware.
-
-UserSchema.pre('save', function save(next) {
+ 
+ UserSchema.pre('save', function save(next) {
   const user = this
   if (!user.isModified('password')) { return next() }
   bcrypt.genSalt(10, (err, salt) => {
