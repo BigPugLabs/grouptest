@@ -158,7 +158,9 @@ input[type="text"]:focus {
 
 .del, .up, .down { 
   display: inline-block; 
-  float: right; 
+  float: right;
+  padding-right: 7px;
+  cursor: pointer;
 }
 
 
